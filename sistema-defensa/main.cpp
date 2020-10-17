@@ -13,7 +13,6 @@ unsigned long long int DISTANCIA_BASES = 0 ;
 
 void movimiento_bala_enemiga( unsigned short int , unsigned short int  ,  unsigned long long int );
 /* @movimiento_bala_enemiga
- * se implementa la ecuación trayectoria de parabola
         esta función toma 3 argumentos dos unsigned short int
             1) la velocidad 0 del disparo bala enemiga
             2) el angulo con el que fue lanzado la bala enemiga
@@ -32,7 +31,13 @@ int main()
 }
 
 void movimiento_bala_enemiga(unsigned short int velocidad_zero , unsigned short int angulo , unsigned short int time_seconds ){
-    signed long int y_position =
+    signed short int Vox = 0;
+    signed short int Voy = 0;
+    signed short int position_x = 0 ;
+    signed short int position_y = 0 ;
+    Voy = velocidad_zero*sin(angulo);
+    Vox = velocidad_zero*cos(angulo);
+
     cout << "" <<" DEBUG position tmp_position " << endl;
 
 }
