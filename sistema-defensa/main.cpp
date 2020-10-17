@@ -27,7 +27,7 @@ int main()
     //cin >> ALTURA_BASE_ENEMIGA;
     //cout << "Velocidad salida bala enemiga :";
     unsigned short int time_elapse = 1;
-    while (movimiento_bala_enemiga(9,30,time_elapse)) {
+    while (movimiento_bala_enemiga(10,30,time_elapse)) {
         time_elapse++;
     }
 
@@ -38,9 +38,7 @@ int main()
 bool movimiento_bala_enemiga(unsigned short int velocidad_zero , unsigned short int angulo , unsigned short int time_seconds ){
     signed short int Vox = 0;
     signed short int Voy = 0;
-    signed short int position_x = 0 ;
-    signed short int position_y = 0 ;
-    Voy = velocidad_zero*sin(angulo)*time_seconds+(0.5*(GRAVEDAD*GRAVEDAD));
+    Voy = ((velocidad_zero*sin(angulo))*time_seconds)+(0.5*(GRAVEDAD*GRAVEDAD));
     Vox = velocidad_zero*cos(angulo)*time_seconds;
     cout << Vox <<" X , Y "<< Voy << " -> time "<< time_seconds << endl;
     if(Voy<=0){
