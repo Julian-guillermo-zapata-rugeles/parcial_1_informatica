@@ -11,7 +11,7 @@ unsigned long long int DISTANCIA_BASES = 0 ;
 
 
 
-void movimiento_bala_enemiga( unsigned short int , unsigned short int  ,  unsigned long long int );
+bool movimiento_bala_enemiga( unsigned short int , unsigned short int  ,  unsigned short int );
 /* @movimiento_bala_enemiga
         esta función toma 3 argumentos dos unsigned short int
             1) la velocidad 0 del disparo bala enemiga
@@ -23,21 +23,30 @@ void movimiento_bala_enemiga( unsigned short int , unsigned short int  ,  unsign
 
 int main()
 {
-    cout << "Altura de la base enemiga : ";
-    cin >> ALTURA_BASE_ENEMIGA;
-    cout << "Velocidad salida bala enemiga :";
-    movimiento_bala_enemiga(9,30,DISTANCIA_BASES);
+    //cout << "Altura de la base enemiga : ";
+    //cin >> ALTURA_BASE_ENEMIGA;
+    //cout << "Velocidad salida bala enemiga :";
+    unsigned short int time_elapse = 1;
+    while (movimiento_bala_enemiga(9,30,time_elapse)) {
+        time_elapse++;
+    }
+
+
     return 0;
 }
 
-void movimiento_bala_enemiga(unsigned short int velocidad_zero , unsigned short int angulo , unsigned short int time_seconds ){
+bool movimiento_bala_enemiga(unsigned short int velocidad_zero , unsigned short int angulo , unsigned short int time_seconds ){
     signed short int Vox = 0;
     signed short int Voy = 0;
     signed short int position_x = 0 ;
     signed short int position_y = 0 ;
-    Voy = velocidad_zero*sin(angulo);
-    Vox = velocidad_zero*cos(angulo);
-
-    cout << "" <<" DEBUG position tmp_position " << endl;
-
+    Voy = velocidad_zero*sin(angulo)*time_seconds+(0.5*(GRAVEDAD*GRAVEDAD));
+    Vox = velocidad_zero*cos(angulo)*time_seconds;
+    cout << Vox <<" X , Y "<< Voy << " -> time "<< time_seconds << endl;
+    if(Voy<=0){
+        return false;
+    }
+    else{
+        return true;
+    }
 }
